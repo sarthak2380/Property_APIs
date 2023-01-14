@@ -1,7 +1,7 @@
 from fastapi import Body, FastAPI, HTTPException
 app = FastAPI()
 import mysql.connector
-connection = mysql.connector.connect(host='localhost',database='properties',user='root',password='sarthak@2308')
+connection = mysql.connector.connect(host='localhost',database='properties',user='root',password='')
 cursor = connection.cursor()
 @app.get("/")
 def root():
@@ -16,7 +16,7 @@ async def create_new_property(payload: dict = Body(...)):
         'state': payload['state']
     }
     try:
-        connection = mysql.connector.connect(host='localhost',database='properties',user='root',password='sarthak@2308')
+        connection = mysql.connector.connect(host='localhost',database='properties',user='root',password='')
         cursor = connection.cursor()
         query = "CREATE TABLE IF NOT EXISTS PROPERTY(property_id int primary key, property_name varchar(50), address varchar(70), city varchar(30), state varchar(30));"
         cursor.execute(query)
