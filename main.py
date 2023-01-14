@@ -56,6 +56,7 @@ async def update_property_details(payload: dict = Body(...)):
     e = payload['state']
     query = f"UPDATE PROPERTY SET property_name = '{b}', address = '{c}', city = '{d}', state = '{e}' WHERE property_id = {a}"
     cursor.execute(query)
+    connection.commit()
     query = "SELECT * FROM PROPERTY"
     cursor.execute(query)
     properties = list(cursor.fetchall())
